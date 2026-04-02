@@ -1,0 +1,280 @@
+.scoreboard-screen {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    padding: 0;
+    isolation: isolate;
+}
+
+.scoreboard-screen .score-stage {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: 50dvh 50dvh;
+    justify-content: stretch;
+    align-content: stretch;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 0;
+}
+
+.scoreboard-screen .score-panel {
+    width: 100vw;
+    height: 50vh;
+    min-height: 50vh;
+    gap: clamp(0.75rem, 1.4vh, 1.25rem);
+    padding: clamp(1rem, 1.8vw, 1.8rem);
+    border-radius: 0;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.scoreboard-screen .score-panel-meta,
+.scoreboard-screen .score-footer-line {
+    gap: 0.75rem;
+}
+
+.scoreboard-screen .score-label {
+    font-size: clamp(1.75rem, 2.7vw, 3rem);
+}
+
+.scoreboard-screen .score-value-wrap {
+    padding: 0.35rem 0;
+}
+
+.scoreboard-screen .score-value {
+    font-size: clamp(8rem, 42vw, 18rem);
+}
+
+.scoreboard-screen .score-chip,
+.scoreboard-screen .score-swipe {
+    white-space: nowrap;
+}
+
+.scoreboard-screen .score-hint {
+    max-width: 16rem;
+}
+
+.scoreboard-screen .score-vs-badge {
+    display: none;
+}
+
+.scoreboard-screen .scoreboard-dock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 40;
+    transform: translate(-50%, -50%);
+}
+
+.scoreboard-screen .scoreboard-dock-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.46);
+    padding: 0.45rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 18px 45px rgba(3, 8, 20, 0.32);
+}
+
+.scoreboard-screen .scoreboard-dock-button,
+.scoreboard-screen .scoreboard-dock-indicator,
+.scoreboard-screen .scoreboard-dock-save {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(248, 250, 252, 0.94);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.scoreboard-screen .scoreboard-dock-button svg,
+.scoreboard-screen .scoreboard-dock-indicator svg,
+.scoreboard-screen .scoreboard-dock-save svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.scoreboard-screen .scoreboard-dock-indicator-live {
+    color: rgba(103, 232, 249, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-indicator-locked {
+    color: rgba(226, 232, 240, 0.88);
+}
+
+.scoreboard-screen .scoreboard-dock-indicator[data-state='synced'] {
+    color: rgba(103, 232, 249, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-indicator[data-state='syncing'] {
+    color: rgba(253, 186, 116, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-indicator[data-state='offline'] {
+    color: rgba(251, 146, 60, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-indicator[data-state='locked'] {
+    color: rgba(226, 232, 240, 0.88);
+}
+
+.scoreboard-screen .scoreboard-dock-button-danger {
+    color: rgba(254, 205, 211, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-details {
+    position: relative;
+}
+
+.scoreboard-screen .scoreboard-dock-details summary {
+    list-style: none;
+}
+
+.scoreboard-screen .scoreboard-dock-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.scoreboard-screen .scoreboard-dock-panel {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    width: min(18rem, 72vw);
+    transform: translateX(-50%);
+    border-radius: 1.4rem;
+    padding: 0.85rem;
+}
+
+.scoreboard-screen .scoreboard-dock-form {
+    margin-top: 0.1rem;
+}
+
+.scoreboard-screen .scoreboard-dock-field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.scoreboard-screen .scoreboard-dock-field span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(226, 232, 240, 0.82);
+}
+
+.scoreboard-screen .scoreboard-dock-field input {
+    width: 100%;
+    border-radius: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+    padding: 0.75rem 0.9rem;
+    font-size: 0.95rem;
+    color: rgba(248, 250, 252, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-field input::placeholder {
+    color: rgba(226, 232, 240, 0.42);
+}
+
+.scoreboard-screen .scoreboard-dock-save {
+    width: 100%;
+    margin-top: 0.15rem;
+    color: rgba(8, 15, 23, 0.96);
+    background: rgba(103, 232, 249, 0.96);
+    border-color: rgba(103, 232, 249, 0.96);
+}
+
+.scoreboard-screen .scoreboard-dock-feedback {
+    margin-bottom: 0.65rem;
+    border-radius: 1rem;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+.scoreboard-screen .scoreboard-dock-feedback-error {
+    border: 1px solid rgba(251, 113, 133, 0.28);
+    background: rgba(127, 29, 29, 0.22);
+    color: rgba(255, 228, 230, 0.96);
+}
+
+@media (orientation: landscape) {
+    .scoreboard-screen .score-stage {
+        grid-template-columns: 50vw 50vw;
+        grid-template-rows: 100dvh;
+    }
+
+    .scoreboard-screen .score-panel {
+        width: 50vw;
+        height: 100dvh;
+        min-height: 100dvh;
+    }
+
+    .scoreboard-screen .score-value {
+        font-size: clamp(10rem, 28vw, 20rem);
+    }
+
+    .scoreboard-screen .scoreboard-dock-controls {
+        flex-direction: column;
+    }
+
+    .scoreboard-screen .scoreboard-dock-panel {
+        top: 50%;
+        left: calc(100% + 0.9rem);
+        width: min(18rem, 24vw);
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 767px) {
+    .scoreboard-screen .score-panel {
+        padding: 0.9rem 0.85rem 1.05rem;
+    }
+
+    .scoreboard-screen .score-label {
+        font-size: clamp(1.65rem, 7vw, 2.4rem);
+    }
+
+    .scoreboard-screen .score-value {
+        font-size: clamp(7.5rem, 44vw, 12rem);
+    }
+
+    .scoreboard-screen .score-chip,
+    .scoreboard-screen .score-swipe {
+        padding: 0.32rem 0.58rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+    }
+
+    .scoreboard-screen .score-hint {
+        max-width: 8.5rem;
+        font-size: 0.78rem;
+    }
+
+    .scoreboard-screen .scoreboard-dock-controls {
+        gap: 0.4rem;
+        padding: 0.38rem;
+    }
+
+    .scoreboard-screen .scoreboard-dock-button,
+    .scoreboard-screen .scoreboard-dock-indicator {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .scoreboard-screen .scoreboard-dock-panel {
+        width: min(16.5rem, 78vw);
+    }
+}

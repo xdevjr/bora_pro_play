@@ -1,0 +1,67 @@
+@media (min-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: minmax(0, 1.28fr) minmax(20rem, 0.72fr) !important;
+    }
+
+    .hero-stage-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.02fr) minmax(18rem, 0.98fr) !important;
+        align-items: start !important;
+    }
+
+    .hero-stage-copy {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    .hero-stage-sidebar {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+    }
+
+    .hero-stage-band {
+        grid-column: 1 / -1 !important;
+    }
+
+    .court-preview {
+        min-height: 22rem !important;
+    }
+
+    .court-preview-scene {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 0 !important;
+        align-items: start !important;
+    }
+
+    .court-team-card--roster {
+        width: min(36rem, 78%) !important;
+        min-height: 10.5rem !important;
+    }
+
+    .court-team-card--scoreboard {
+        width: min(28rem, 58%) !important;
+        min-height: 11.25rem !important;
+        justify-self: end !important;
+        margin-top: -3rem !important;
+    }
+
+    .court-card-header--scoreboard .glass-chip {
+        white-space: nowrap !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero-grid {
+        grid-template-columns: minmax(0, 1.34fr) minmax(21rem, 0.66fr) !important;
+    }
+
+    .court-preview {
+        min-height: 23rem !important;
+    }
+
+    .court-team-card--scoreboard {
+        width: min(30rem, 52%) !important;
+        margin-top: -3.4rem !important;
+    }
+}
