@@ -1,0 +1,59 @@
+name: bora-pro-play
+
+x-laravel-service: &laravel-service
+  build:
+    context: .
+    dockerfile: Dockerfile
+  restart: unless-stopped
+  environment: &laravel-environment
+    APP_ENV: production
+    APP_DEBUG: "false"
+    LOG_CHANNEL: stderr
+    LOG_LEVEL: info
+    LARAVEL_OPTIMIZE: "true"
+  volumes:
+    - laravel_storage:/var/www/html/storage
+    - laravel_database:/var/www/html/database
+
+services:
+  app:
+    <<: *laravel-service
+    command: ["app"]
+    environment:
+      <<: *laravel-environment
+      RUN_MIGRATIONS: "true"
+    expose:
+      - "8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://127.0.0.1:8080/up || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  queue:
+    <<: *laravel-service
+    profiles: ["workers"]
+    command: ["queue"]
+    environment:
+      <<: *laravel-environment
+      RUN_MIGRATIONS: "false"
+    depends_on:
+      app:
+        condition: service_healthy
+    stop_grace_period: 2m
+
+  scheduler:
+    <<: *laravel-service
+    profiles: ["scheduler"]
+    command: ["scheduler"]
+    environment:
+      <<: *laravel-environment
+      RUN_MIGRATIONS: "false"
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  laravel_storage:
+  laravel_database:
