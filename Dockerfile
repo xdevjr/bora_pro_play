@@ -12,7 +12,6 @@ RUN composer install \
     --no-progress \
     --prefer-dist \
     --optimize-autoloader \
-    --classmap-authoritative \
     --no-scripts
 
 FROM oven/bun:1.2.15-alpine AS frontend
